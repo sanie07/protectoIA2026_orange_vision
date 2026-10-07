@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="keywords" content="Inteligencia Artificial, Visión por Computadora, Detección de Naranjas, Machine Learning, UNA, Universidad Nacional de Asunción, Nicolas De Egea, Sanie Peralta">
+  <meta name="author" content="Nicolas De Egea, Sanie Peralta">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+  <!-- Glow Background Effect -->
+  <div class="bg-glow">
+    <div class="glow-circle-1"></div>
+    <div class="glow-circle-2"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="{{ '/' | relative_url }}" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" stroke="none"/>
+            <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7 7 7 0 0 1-7 7z"/>
+            <circle cx="12" cy="12" r="4" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+        </div>
+        <span>OrangeVision <span style="color: var(--primary);">AI</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#prototipo" class="nav-link">Prototipo Sintético</a></li>
+        <li><a href="#demostrador" class="nav-link">Simulador IA</a></li>
+        <li><a href="#metricas" class="nav-link">Métricas</a></li>
+        <li><a href="#equipo" class="nav-link">Equipo & UNA</a></li>
+      </ul>
+
+      <div class="nav-badge">
+        <span class="badge-dot"></span>
+        <span>Prototipo v1.0 | UNA</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    {{ content }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p style="margin-bottom: 0.5rem; font-weight: 600; color: var(--text-main);">
+        Orange Vision AI &copy; 2026 — Universidad Nacional de Asunción (UNA)
+      </p>
+      <p>
+        Desarrollado por <strong>Nicolas De Egea</strong> y <strong>Sanie Peralta</strong> como prototipo de investigación en Visión por Computadora aplicable a la citricultura.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

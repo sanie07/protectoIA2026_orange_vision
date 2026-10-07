@@ -1,0 +1,24 @@
+# Configuración de Jekyll para GitHub Pages
+title: "Orange Vision AI - Detección de Naranjas"
+description: "Proyecto de Visión por Computadora e Inteligencia Artificial para la detección e identificación de naranjas reales en arbustos sintéticos de prueba."
+url: "https://sanie07.github.io" # URL de GitHub Pages
+baseurl: "/protectoIA2026_orange_vision" # Nombre del repositorio
+
+university: "Universidad Nacional de Asunción"
+faculty: "Facultad Politécnica / Ingeniería"
+year: "2026"
+
+authors:
+  - name: "Nicolas De Egea"
+    role: "Investigador / Desarrollador IA"
+  - name: "Sanie Peralta"
+    role: "Investigadora / Desarrolladora IA"
+
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+sass:
+  style: compressed
