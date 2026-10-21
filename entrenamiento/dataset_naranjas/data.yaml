@@ -1,0 +1,6 @@
+path: C:/Users/sanie/Documents/GitHub/protectoIA2026_orange_vision/entrenamiento/dataset_naranjas
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: orange
