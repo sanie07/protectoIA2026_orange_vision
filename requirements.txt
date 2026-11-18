@@ -1,0 +1,4 @@
+# Demo local (serve.py). Los notebooks se ejecutan en Google Colab e instalan lo suyo.
+ultralytics==8.4.175
+flask>=3.0
+opencv-python>=4.8

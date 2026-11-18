@@ -5,3 +5,13 @@ _site/
 _preview.html
 __pycache__/
 *.pyc
+
+# Locales, no se publican
+.claude/
+.DS_Store
+desktop.ini
+historial_capturas/
+ReferenciasBibliograficas/*.pdf
+*.zip
+# Pesos base que Ultralytics descarga solo
+/yolo*.pt

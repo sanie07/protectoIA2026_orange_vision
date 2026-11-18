@@ -1,0 +1,46 @@
+{
+  "N_IMAGENES": 1500,
+  "ENTORNOS_COMPLETOS": [
+    "IN"
+  ],
+  "MODELOS": {
+    "YOLOv8n": {
+      "pesos": "yolov8n.pt",
+      "congelar": 10,
+      "lr0": 0.001
+    },
+    "YOLO11n": {
+      "pesos": "yolo11n.pt",
+      "congelar": 11,
+      "lr0": 0.001
+    },
+    "YOLOv8m": {
+      "pesos": "yolov8m.pt",
+      "congelar": 10,
+      "lr0": 0.0003
+    },
+    "YOLO11m": {
+      "pesos": "yolo11m.pt",
+      "congelar": 11,
+      "lr0": 0.0003
+    }
+  },
+  "EPOCAS_FASE1": 10,
+  "EPOCAS_FASE2": 40,
+  "PACIENCIA": 10,
+  "IMGSZ": 640,
+  "BATCH": 16,
+  "OPTIMIZADOR": "AdamW",
+  "FRACCION_VAL": 0.1,
+  "FRACCION_TEST": 0.2,
+  "SEMILLA_DATOS": 42,
+  "AUMENTACION": {
+    "hsv_h": 0.015,
+    "hsv_s": 0.7,
+    "hsv_v": 0.4,
+    "translate": 0.1,
+    "scale": 0.5,
+    "fliplr": 0.5,
+    "mosaic": 1.0
+  }
+}

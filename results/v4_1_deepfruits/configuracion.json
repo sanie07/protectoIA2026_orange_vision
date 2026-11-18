@@ -1,0 +1,45 @@
+{
+  "ROBOFLOW": {
+    "workspace": "inkyu-sa-e0c78",
+    "proyecto": "deepfruits-orange",
+    "version": 2
+  },
+  "MODELOS": {
+    "YOLOv8n": {
+      "pesos": "yolov8n.pt",
+      "congelar": 10,
+      "lr0": 0.001
+    },
+    "YOLO11n": {
+      "pesos": "yolo11n.pt",
+      "congelar": 11,
+      "lr0": 0.001
+    },
+    "YOLOv8m": {
+      "pesos": "yolov8m.pt",
+      "congelar": 10,
+      "lr0": 0.0003
+    },
+    "YOLO11m": {
+      "pesos": "yolo11m.pt",
+      "congelar": 11,
+      "lr0": 0.0003
+    }
+  },
+  "EPOCAS_FASE1": 30,
+  "EPOCAS_FASE2": 100,
+  "PACIENCIA": 30,
+  "IMGSZ": 640,
+  "BATCH": 8,
+  "NBS": 8,
+  "OPTIMIZADOR": "AdamW",
+  "AUMENTACION": {
+    "hsv_h": 0.015,
+    "hsv_s": 0.7,
+    "hsv_v": 0.4,
+    "translate": 0.1,
+    "scale": 0.5,
+    "fliplr": 0.5,
+    "mosaic": 1.0
+  }
+}

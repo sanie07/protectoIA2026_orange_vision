@@ -1,0 +1,17 @@
+Modelo final (mayor mAP50-95 en validación): YOLO11m
+Mayor mAP50-95 en test: YOLO11m (0.439)
+Más rápido (GPU): YOLOv8n (7.6 ms/img, 132 FPS)
+
+Etapas (mAP50-95 en test):
+  YOLOv8n: Pura 0.222 → TL 0.379 (+0.157) → FT 0.416 (+0.037)
+  YOLO11n: Pura 0.227 → TL 0.386 (+0.159) → FT 0.424 (+0.038)
+  YOLOv8m: Pura 0.270 → TL 0.423 (+0.152) → FT 0.434 (+0.012)
+  YOLO11m: Pura 0.274 → TL 0.433 (+0.159) → FT 0.439 (+0.006)
+
+Generación (mismo tamaño, fine-tuning):
+  YOLO11n vs YOLOv8n: mAP50-95 +0.008, latencia 9.7 vs 7.6 ms, parámetros 2.6 vs 3.1 M
+  YOLO11m vs YOLOv8m: mAP50-95 +0.005, latencia 27.9 vs 27.6 ms, parámetros 20.1 vs 25.9 M
+
+Tamaño (misma generación, fine-tuning):
+  YOLOv8m vs YOLOv8n: mAP50-95 +0.018, 3.6× más lento, 8.2× más parámetros
+  YOLO11m vs YOLO11n: mAP50-95 +0.015, 2.9× más lento, 7.7× más parámetros

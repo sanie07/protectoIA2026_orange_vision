@@ -22,3 +22,15 @@ plugins:
 
 sass:
   style: compressed
+
+# Carpetas del proyecto que no forman parte del sitio web
+exclude:
+  - notebooks/
+  - models/
+  - data/
+  - results/
+  - ReferenciasBibliograficas/
+  - historial_capturas/
+  - serve.py
+  - requirements.txt
+  - README.md

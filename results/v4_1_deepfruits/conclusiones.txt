@@ -1,0 +1,31 @@
+Modelo final (mayor mAP50-95 en validación): YOLOv8m
+Mayor mAP50-95 en test: YOLO11m (0.658)
+Más rápido (GPU): YOLOv8n (9.8 ms/img, 102 FPS)
+
+Etapas (mAP50-95 en test):
+  YOLOv8n: Pura 0.450 → TL 0.605 (+0.155) → FT 0.619 (+0.014)
+  YOLO11n: Pura 0.469 → TL 0.603 (+0.134) → FT 0.617 (+0.013)
+  YOLOv8m: Pura 0.491 → TL 0.614 (+0.122) → FT 0.607 (-0.007)
+  YOLO11m: Pura 0.536 → TL 0.635 (+0.100) → FT 0.658 (+0.023)
+
+Generación (mismo tamaño, fine-tuning):
+  YOLO11n vs YOLOv8n: mAP50-95 -0.002, latencia 11.8 vs 9.8 ms, parámetros 2.6 vs 3.1 M
+  YOLO11m vs YOLOv8m: mAP50-95 +0.052, latencia 21.9 vs 22.3 ms, parámetros 20.1 vs 25.9 M
+
+Tamaño (misma generación, fine-tuning):
+  YOLOv8m vs YOLOv8n: mAP50-95 -0.012, 2.3× más lento, 8.2× más parámetros
+  YOLO11m vs YOLO11n: mAP50-95 +0.042, 1.9× más lento, 7.7× más parámetros
+
+Las mismas etapas con Mendeley (v4, mAP50-95 en test de Mendeley):
+  YOLOv8n: Pura 0.222 → TL 0.379 (+0.157) → FT 0.416 (+0.037)
+  YOLO11n: Pura 0.227 → TL 0.386 (+0.159) → FT 0.424 (+0.038)
+  YOLOv8m: Pura 0.270 → TL 0.423 (+0.152) → FT 0.434 (+0.012)
+  YOLO11m: Pura 0.274 → TL 0.433 (+0.159) → FT 0.439 (+0.006)
+
+Generalización entre datasets (mAP50-95 en test; nan = no disponible):
+  YOLOv8n: en DeepFruits, Mendeley 0.580 vs Pura 0.450 vs propio 0.609 | en Mendeley, DeepFruits 0.202 vs Pura 0.222 vs propio 0.416
+  YOLO11n: en DeepFruits, Mendeley 0.548 vs Pura 0.469 vs propio 0.616 | en Mendeley, DeepFruits 0.206 vs Pura 0.227 vs propio 0.424
+  YOLOv8m: en DeepFruits, Mendeley 0.558 vs Pura 0.491 vs propio 0.621 | en Mendeley, DeepFruits 0.180 vs Pura 0.270 vs propio 0.437
+  YOLO11m: en DeepFruits, Mendeley 0.603 vs Pura 0.536 vs propio 0.660 | en Mendeley, DeepFruits 0.198 vs Pura 0.274 vs propio 0.440
+
+Nota: el test tiene 7 fotos; diferencias de ≈ 0.02–0.03 en mAP50-95 entre modelos pueden deberse al azar.

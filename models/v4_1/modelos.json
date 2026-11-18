@@ -1,0 +1,53 @@
+{
+  "final": "YOLOv8m",
+  "experimento": "v4_1_deepfruits",
+  "dataset": "deepfruits-orange v2",
+  "perfil": "completo",
+  "imgsz": 640,
+  "modelos": {
+    "YOLOv8n": {
+      "archivo": "orange_yolov8n.pt",
+      "umbral_conf": 0.642,
+      "mAP50-95 val": 0.8208,
+      "mAP50-95 test": 0.6087,
+      "mAP50-95 test por etapa": {
+        "Pura (COCO)": 0.4498,
+        "Transfer learning": 0.6048,
+        "Fine-tuning": 0.6192
+      }
+    },
+    "YOLO11n": {
+      "archivo": "orange_yolo11n.pt",
+      "umbral_conf": 0.633,
+      "mAP50-95 val": 0.8083,
+      "mAP50-95 test": 0.6157,
+      "mAP50-95 test por etapa": {
+        "Pura (COCO)": 0.4693,
+        "Transfer learning": 0.6035,
+        "Fine-tuning": 0.6167
+      }
+    },
+    "YOLOv8m": {
+      "archivo": "orange_yolov8m.pt",
+      "umbral_conf": 0.467,
+      "mAP50-95 val": 0.8434,
+      "mAP50-95 test": 0.6211,
+      "mAP50-95 test por etapa": {
+        "Pura (COCO)": 0.4915,
+        "Transfer learning": 0.6136,
+        "Fine-tuning": 0.6068
+      }
+    },
+    "YOLO11m": {
+      "archivo": "orange_yolo11m.pt",
+      "umbral_conf": 0.743,
+      "mAP50-95 val": 0.8426,
+      "mAP50-95 test": 0.6595,
+      "mAP50-95 test por etapa": {
+        "Pura (COCO)": 0.5356,
+        "Transfer learning": 0.6355,
+        "Fine-tuning": 0.6584
+      }
+    }
+  }
+}
