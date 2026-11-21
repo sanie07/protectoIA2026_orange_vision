@@ -5,12 +5,11 @@ _site/
 __pycache__/
 *.pyc
 
-# Locales, no se publican
+# Locales
 .claude/
 .DS_Store
 desktop.ini
 *.zip
 # Pesos base que Ultralytics descarga solo
 /yolo*.pt
-# Fotos originales de los CV (el sitio usa las versiones recortadas de assets/img/equipo/)
-fotos-cv/
+
