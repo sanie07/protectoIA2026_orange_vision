@@ -2,7 +2,6 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
-_preview.html
 __pycache__/
 *.pyc
 
@@ -10,8 +9,8 @@ __pycache__/
 .claude/
 .DS_Store
 desktop.ini
-historial_capturas/
-ReferenciasBibliograficas/*.pdf
 *.zip
 # Pesos base que Ultralytics descarga solo
 /yolo*.pt
+# Fotos originales de los CV (el sitio usa las versiones recortadas de assets/img/equipo/)
+fotos-cv/

@@ -1,304 +1,317 @@
 ---
 layout: default
-title: "Orange Vision AI - Detección de Naranjas | UNA"
-description: "Prototipo de Inteligencia Artificial para la detección e identificación de naranjas reales en arbustos sintéticos de prueba. Desarrollado en la Universidad Nacional de Asunción."
+title: "Orange Vision AI - Detección de naranjas con YOLO | FIUNA"
+description: "Proyecto final de Inteligencia Artificial 2026 (FIUNA - UNA): detectores YOLO entrenados para encontrar naranjas en fotos de campo."
 ---
 
-<!-- HERO SECTION -->
+<!-- INICIO -->
 <section id="inicio" class="hero">
   <div class="container">
     <div class="hero-tag">
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      Proyecto de Investigación en Machine Learning & Visión Artificial
+      Proyecto Final · Inteligencia Artificial 2026 · FIUNA
     </div>
-    
+
     <h1 class="hero-title">
-      Identificación Inteligente de <span>Naranjas Reales</span> en Entornos Controlados
+      Detección de <span>naranjas en campo</span> con YOLO
     </h1>
-    
+
     <p class="hero-description">
-      Un prototipo de aprendizaje automático desarrollado para detectar y delimitar frutos reales en arbustos sintéticos de prueba, como base para algoritmos de citricultura de precisión.
+      Entrenamos y comparamos cuatro detectores YOLO para encontrar naranjas en fotos de naranjos tomadas en campo.
+      Medimos cuánto aporta cada etapa del entrenamiento (modelo preentrenado, <em>transfer learning</em> y
+      <em>fine-tuning</em>) y cuánto se gana con un modelo más grande. Detectar frutos de forma automática es el
+      primer paso para estimar cosechas y guiar robots recolectores.
     </p>
 
     <div class="hero-cta">
-      <a href="#demostrador" class="btn btn-primary">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Probar Simulador IA
+      <a href="{{ site.repo_url }}" class="btn btn-primary">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+        Ver repositorio en GitHub
       </a>
-      <a href="#prototipo" class="btn btn-secondary">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        Ver Metodología del Prototipo
+      <a href="#equipo" class="btn btn-secondary">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Equipo y CV
       </a>
     </div>
 
-    <!-- Feature Highlights Banner -->
-    <div class="features-banner">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        </div>
-        <h3 class="feature-title">Frutos Orgánicos Reales</h3>
-        <p class="feature-desc">Muestreo y evaluación con naranjas naturales reales bajo diversas condiciones lumínicas y ángulos.</p>
+    <div class="metrics-box compact">
+      <div class="metric-item">
+        <div class="metric-number">0.439</div>
+        <div class="metric-label">mAP50-95 en test</div>
+        <div class="metric-sub">Mejor modelo: YOLO11m</div>
       </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-        </div>
-        <h3 class="feature-title">Arbustos Sintéticos</h3>
-        <p class="feature-desc">Estructura vegetal artificial para garantizar repetibilidad geométrica y control experimental absoluto.</p>
+      <div class="metric-item">
+        <div class="metric-number">0.818</div>
+        <div class="metric-label">mAP50 en test</div>
+        <div class="metric-sub">YOLO11m, 3 semillas</div>
       </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <h3 class="feature-title">Inferencia en Tiempo Real</h3>
-        <p class="feature-desc">Procesamiento a alta tasa de cuadros por segundo (FPS) apto para integración en vehículos robóticos.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-        <h3 class="feature-title">Modelo YOLO Entrenado</h3>
-        <p class="feature-desc">YOLO11m y YOLO11n ajustados (transfer learning + fine-tuning) sobre el dataset Mendeley de naranjas en campo.</p>
+      <div class="metric-item">
+        <div class="metric-number">1502</div>
+        <div class="metric-label">Fotos de campo</div>
+        <div class="metric-sub">Mendeley, train / val / test</div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- PROTOTYPE METHODOLOGY SECTION -->
-<section id="prototipo" class="section">
+<!-- CARACTERÍSTICAS CLAVE -->
+<section id="proyecto" class="section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Diseño Experimental</span>
-      <h2 class="section-title">¿Por qué Arbustos Sintéticos con Naranjas Reales?</h2>
+      <span class="section-tag">Características clave</span>
+      <h2 class="section-title">Dataset, modelos y optimización</h2>
       <p class="section-desc">
-        Este prototipo combina la naturalidad óptica de frutos orgánicos con entornos sintéticos calibrados para maximizar la solidez del modelo de Machine Learning.
+        Todo el trabajo se hizo en notebooks de Google Colab (GPU T4) con Ultralytics. La división de datos, las
+        tablas y las gráficas están en el repositorio para poder reproducirlo.
       </p>
     </div>
 
-    <div class="prototype-grid">
+    <div class="prototype-grid two-cols">
       <div class="proto-card">
         <div class="proto-num">01</div>
-        <h3>Control de Variables Lumínicas</h3>
-        <p>
-          Los arbustos sintéticos permiten ajustar oclusiones, follaje artificial y sombras de forma milimétrica en laboratorio, aislando el comportamiento óptico de la piel de la naranja real.
-        </p>
+        <h3>Dataset</h3>
+        <p>Fotos RGB de naranjos con cajas (<em>bounding boxes</em>) en formato YOLO y una sola clase: <code>orange</code>.</p>
+        <ul class="card-list">
+          <li><strong>Mendeley <em>Oranges in the field</em>:</strong> 1502 fotos, train 1050 / val 152 / test 300, sin repetir árbol entre conjuntos.</li>
+          <li><strong>DeepFruits <em>orange</em>:</strong> 66 fotos (52 / 7 / 7), para probar con pocos datos y la generalización entre datasets.</li>
+          <li>Imágenes redimensionadas a 640 px.</li>
+        </ul>
       </div>
 
       <div class="proto-card">
         <div class="proto-num">02</div>
-        <h3>Frutos Reales de Variedad Local</h3>
-        <p>
-          Utilizamos ejemplares orgánicos reales en distintos estados de maduración para garantizar que las firmas de color, reflejos y textura concuerden con los campos agrícolas reales de Paraguay.
-        </p>
+        <h3>Modelos</h3>
+        <p>Cuatro detectores de una etapa preentrenados en COCO: <strong>YOLOv8n, YOLO11n, YOLOv8m y YOLO11m</strong> (dos generaciones × dos tamaños). Cada uno pasa por tres etapas:</p>
+        <ul class="card-list">
+          <li><strong>Pura (COCO):</strong> el modelo tal cual, usando su clase <em>orange</em>.</li>
+          <li><strong>Transfer learning:</strong> <em>backbone</em> congelado, se entrenan <em>neck</em> y <em>head</em> (10 épocas).</li>
+          <li><strong>Fine-tuning:</strong> toda la red con un <code>lr0</code> 10 veces menor (hasta 40 épocas, <em>early stopping</em>).</li>
+        </ul>
       </div>
 
       <div class="proto-card">
         <div class="proto-num">03</div>
-        <h3>Dataset Estandarizado</h3>
-        <p>
-          Generación de un banco de datos etiquetado de alta precisión (Bounding Boxes) que acelera el entrenamiento sin depender de las estaciones de cosecha del año.
-        </p>
+        <h3>Optimización de hiperparámetros</h3>
+        <p><strong>Grid Search</strong> del learning rate inicial <code>lr0</code> ∈ {1e-3, 3e-4, 1e-4} para YOLO11n, YOLO11m y RT-DETR, elegido solo con validación.</p>
+        <ul class="card-list">
+          <li>AdamW, batch 16; <code>lr0</code> = 1e-3 para los modelos <em>n</em> y 3e-4 para los <em>m</em>.</li>
+          <li>Aumento de datos: HSV, traslación, escala, <em>flip</em> y mosaico.</li>
+        </ul>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-num">04</div>
+        <h3>Evaluación</h3>
+        <p>Todas las etapas se evalúan en el mismo conjunto de test.</p>
+        <ul class="card-list">
+          <li><strong>Métricas:</strong> precisión, recall, F1, mAP50 y mAP50-95.</li>
+          <li><strong>Robustez:</strong> media ± desvío de 3 semillas.</li>
+          <li><strong>Costo:</strong> parámetros y latencia por imagen en GPU y CPU.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- DEMO SIMULATOR SECTION -->
-<section id="demostrador" class="section">
+<!-- OPTIMIZACIÓN + RESULTADOS -->
+<section id="resultados" class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Simulador Interactivo de Visión IA</span>
-      <h2 class="section-title">Demostración en Tiempo Real</h2>
+      <span class="section-tag">Resultados</span>
+      <h2 class="section-title">Qué aprendimos de los experimentos</h2>
       <p class="section-desc">
-        El modelo entrenado analiza la cámara en vivo. Ajuste el umbral de confianza y las capas de visualización.
+        Tablas y gráficas generadas por los notebooks <code>OrangeAI_v2</code> y <code>OrangeAI_v4.0.1</code>
+        (test de Mendeley, 300 fotos). Haga clic en una gráfica para verla en tamaño completo.
       </p>
     </div>
 
-    <div class="demo-container">
-      <div class="demo-grid">
+    <div class="tables-grid">
+      <div class="table-card">
+        <h3>Grid Search del learning rate</h3>
+        <p class="table-note">mAP50-95 en validación tras 15 épocas de transfer learning (v2). En naranja, el mejor valor por modelo.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Modelo</th><th>lr0 = 1e-3</th><th>lr0 = 3e-4</th><th>lr0 = 1e-4</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>YOLO11n</td><td class="best">0.412</td><td>0.398</td><td>0.378</td></tr>
+            <tr><td>YOLO11m</td><td>0.443</td><td class="best">0.448</td><td>0.444</td></tr>
+            <tr><td>RT-DETR</td><td class="best">0.226</td><td>0.185</td><td>0.147</td></tr>
+          </tbody>
+        </table>
+        <p class="table-note" style="margin: 1rem 0 0 0;">RT-DETR quedó muy por debajo de YOLO con estos datos, por eso la comparación final usa solo modelos YOLO.</p>
+      </div>
 
-        <!-- Columna Izquierda: Cámara en vivo con detecciones del modelo -->
-        <div>
-          <div class="viewport-wrapper">
-            <img id="ia-camera-feed" src="/video_feed" alt="Cámara en vivo con detecciones">
-            <div class="viewport-overlay">
-              <div class="status-pill rec">CÁMARA EN VIVO</div>
-              <div class="status-pill" id="fpsCounter">-- FPS</div>
-            </div>
-            <div class="viewport-msg" id="viewportMsg">Conectando con la cámara...</div>
-          </div>
-        </div>
+      <div class="table-card">
+        <h3>mAP50-95 por etapa de entrenamiento</h3>
+        <p class="table-note">Test de Mendeley, media de 3 semillas (v4).</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Modelo</th><th>Pura (COCO)</th><th>Transfer</th><th>Fine-tuning</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>YOLOv8n</td><td>0.222</td><td>0.379</td><td>0.416</td></tr>
+            <tr><td>YOLO11n</td><td>0.227</td><td>0.386</td><td>0.424</td></tr>
+            <tr><td>YOLOv8m</td><td>0.270</td><td>0.423</td><td>0.434</td></tr>
+            <tr><td>YOLO11m</td><td>0.274</td><td>0.433</td><td class="best">0.439</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-        <!-- Columna Derecha: Controles -->
-        <div class="controls-panel">
-          <div class="control-card">
-            <div class="control-title">Modelo de Detección</div>
-            <div class="model-switch" id="modelSwitch" role="group" aria-label="Modelo de detección">
-              <button type="button" class="model-btn active" data-modelo="YOLO11n">
-                YOLO11n<small>Más rápido</small>
-              </button>
-              <button type="button" class="model-btn" data-modelo="YOLO11m">
-                YOLO11m<small>Más preciso</small>
-              </button>
-            </div>
-          </div>
-
-          <div class="control-card">
-            <div class="control-title">
-              <span>Umbral de Confianza (Threshold)</span>
-              <span id="confidenceValue" style="color: var(--primary);">--%</span>
-            </div>
-            <input type="range" id="confidenceSlider" class="range-slider" min="0.05" max="0.95" step="0.01" value="0.50">
-            <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">
-              Filtra detecciones con probabilidad inferior al valor seleccionado. Valor inicial: 50 %, más estricto que el umbral de máximo F1 en validación (≈30 %) para descartar dedos y piel en la cámara en vivo.
-            </p>
-          </div>
-
-          <div class="control-card">
-            <div class="control-title">Estadísticas de Detección</div>
-            <div class="stats-counter-list">
-              <div class="stat-row">
-                <span class="stat-label">Naranjas Detectadas:</span>
-                <span class="stat-val" style="color: var(--primary);" id="countTotal">0</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Confianza Promedio:</span>
-                <span class="stat-val" id="avgConf">-</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Inferencia:</span>
-                <span class="stat-val" id="inferMs">-</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="control-card">
-            <div class="control-title">Capas de Visualización</div>
-            <div class="toggle-group">
-              <label class="toggle-item">
-                <span>Cajas de Detección (Bounding Boxes)</span>
-                <div class="switch">
-                  <input type="checkbox" id="toggleBoxes" checked>
-                  <span class="slider-toggle"></span>
-                </div>
-              </label>
-
-              <label class="toggle-item">
-                <span>Etiquetas y Porcentajes</span>
-                <div class="switch">
-                  <input type="checkbox" id="toggleLabels" checked>
-                  <span class="slider-toggle"></span>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
-
+      <div class="table-card" style="grid-column: 1 / -1;">
+        <h3>Modelos finales (fine-tuning)</h3>
+        <p class="table-note">Test de Mendeley, media de 3 semillas. Latencia por imagen en GPU T4 y en la CPU de Colab.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Modelo</th><th>Precisión</th><th>Recall</th><th>F1</th><th>mAP50</th><th>mAP50-95</th><th>Parámetros</th><th>GPU (ms)</th><th>CPU (ms)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>YOLOv8n</td><td>0.836</td><td>0.691</td><td>0.756</td><td>0.783</td><td>0.416</td><td>3.1 M</td><td class="best">7.6</td><td>110</td></tr>
+            <tr><td>YOLO11n</td><td>0.835</td><td>0.699</td><td>0.761</td><td>0.793</td><td>0.424</td><td class="best">2.6 M</td><td>9.7</td><td class="best">107</td></tr>
+            <tr><td>YOLOv8m</td><td class="best">0.850</td><td>0.731</td><td>0.786</td><td>0.813</td><td>0.434</td><td>25.9 M</td><td>27.6</td><td>758</td></tr>
+            <tr><td>YOLO11m</td><td>0.844</td><td class="best">0.737</td><td class="best">0.787</td><td class="best">0.818</td><td class="best">0.439</td><td>20.1 M</td><td>27.9</td><td>737</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- METRICS SECTION -->
-<section id="metricas" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Resultados cuantitativos</span>
-      <h2 class="section-title">Métricas de Desempeño del Modelo</h2>
-      <p class="section-desc">
-        <span id="metricsModel">YOLO11n</span> (v4, fine-tuning) evaluado sobre el conjunto de prueba del dataset Mendeley (300 imágenes, promedio de 3 semillas).
-      </p>
-    </div>
+    <div class="figure-grid">
+      <figure class="figure-card wide">
+        <a href="{{ '/results/v4_N1500/G2_progresion_etapas.png' | relative_url }}">
+          <img src="{{ '/results/v4_N1500/G2_progresion_etapas.png' | relative_url }}" width="2584" height="909" loading="lazy"
+               alt="Progresión del mAP50-95 de cada modelo en las etapas pura, transfer learning y fine-tuning">
+        </a>
+        <figcaption><strong>Progresión por etapas.</strong> El transfer learning aporta casi toda la mejora; el fine-tuning suma poco más.</figcaption>
+      </figure>
 
-    <div class="metrics-box">
-      <div class="metric-item">
-        <div class="metric-number" id="metricMap50">79.3%</div>
-        <div class="metric-label">mAP @0.50</div>
-        <div class="metric-sub">Precisión Media Promedio</div>
-      </div>
+      <figure class="figure-card">
+        <a href="{{ '/results/v4_N1500/G6_perdidas_train_val.png' | relative_url }}">
+          <img src="{{ '/results/v4_N1500/G6_perdidas_train_val.png' | relative_url }}" width="3185" height="1828" loading="lazy"
+               alt="Curvas de pérdida de entrenamiento y validación por época">
+        </a>
+        <figcaption><strong>Convergencia.</strong> Pérdidas de entrenamiento y validación por época.</figcaption>
+      </figure>
 
-      <div class="metric-item">
-        <div class="metric-number" id="metricPrecision">83.5%</div>
-        <div class="metric-label">Precisión (Precision)</div>
-        <div class="metric-sub">Baja tasa de falsos positivos</div>
-      </div>
+      <figure class="figure-card">
+        <a href="{{ '/results/v4_N1500/G8_matrices_confusion.png' | relative_url }}">
+          <img src="{{ '/results/v4_N1500/G8_matrices_confusion.png' | relative_url }}" width="2642" height="1949" loading="lazy"
+               alt="Matrices de confusión de los cuatro modelos en test">
+        </a>
+        <figcaption><strong>Matrices de confusión.</strong> Naranjas detectadas, perdidas y falsos positivos en test.</figcaption>
+      </figure>
 
-      <div class="metric-item">
-        <div class="metric-number" id="metricRecall">69.9%</div>
-        <div class="metric-label">Sensibilidad (Recall)</div>
-        <div class="metric-sub">Frutos encontrados del total real</div>
-      </div>
+      <figure class="figure-card">
+        <a href="{{ '/results/v4_N1500/G11_velocidad_vs_precision.png' | relative_url }}">
+          <img src="{{ '/results/v4_N1500/G11_velocidad_vs_precision.png' | relative_url }}" width="1885" height="1022" loading="lazy"
+               alt="Latencia frente a mAP50-95 de cada modelo">
+        </a>
+        <figcaption><strong>Velocidad vs. precisión.</strong> Los modelos <em>m</em> ganan ≈ 0.015 de mAP50-95 pero son ≈ 3 veces más lentos en GPU.</figcaption>
+      </figure>
 
-      <div class="metric-item">
-        <div class="metric-number" id="metricMs">10 ms</div>
-        <div class="metric-label">Latencia de Inferencia</div>
-        <div class="metric-sub">Por imagen en GPU Tesla T4</div>
-      </div>
+      <figure class="figure-card">
+        <a href="{{ '/results/v4_1_deepfruits/G12_generalizacion_entre_datasets.png' | relative_url }}">
+          <img src="{{ '/results/v4_1_deepfruits/G12_generalizacion_entre_datasets.png' | relative_url }}" width="2645" height="744" loading="lazy"
+               alt="mAP50-95 de cada modelo evaluado en el dataset con el que no fue entrenado">
+        </a>
+        <figcaption><strong>Generalización entre datasets.</strong> Entrenado en Mendeley mejora en DeepFruits; entrenado con las 52 fotos de DeepFruits empeora en Mendeley.</figcaption>
+      </figure>
+
+      <figure class="figure-card wide">
+        <a href="{{ '/assets/img/prediccion_campo.jpg' | relative_url }}">
+          <img src="{{ '/assets/img/prediccion_campo.jpg' | relative_url }}" width="2400" height="465" loading="lazy"
+               alt="Foto de test de un naranjo con las 11 naranjas reales y las detectadas por cada modelo">
+        </a>
+        <figcaption><strong>Predicciones.</strong> Foto de test (mañana, soleado): las 11 naranjas reales (izquierda) y las detectadas por cada modelo.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
 
-<!-- TEAM & UNIVERSITY SECTION -->
-<section id="equipo" class="section">
+<!-- CONCLUSIONES -->
+<section id="conclusiones" class="section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Investigación & Desarrollo</span>
-      <h2 class="section-title">Equipo Integrante del Proyecto</h2>
+      <span class="section-tag">Conclusiones</span>
+      <h2 class="section-title">Hallazgos y limitaciones</h2>
+    </div>
+
+    <div class="prototype-grid two-cols">
+      <div class="proto-card">
+        <h3>Hallazgos</h3>
+        <ul class="card-list">
+          <li>El <strong>transfer learning</strong> sube el mAP50-95 entre 0.15 y 0.16 sobre el modelo puro; el <strong>fine-tuning</strong> suma +0.04 en los modelos <em>n</em> y +0.01 en los <em>m</em>.</li>
+          <li><strong>YOLO11</strong> supera a YOLOv8 del mismo tamaño por muy poco (+0.005 a +0.008) con menos parámetros.</li>
+          <li><strong>YOLO11m</strong> es el más preciso (0.439); <strong>YOLO11n</strong> es la mejor opción para CPU (≈ 7 veces más rápido).</li>
+          <li>Con solo 66 fotos (DeepFruits) el mismo proceso lleva YOLO11m de 0.536 a 0.658, pero ese modelo no generaliza a Mendeley.</li>
+        </ul>
+      </div>
+
+      <div class="proto-card">
+        <h3>Limitaciones y trabajo futuro</h3>
+        <ul class="card-list">
+          <li>Los modelos nunca vieron manos: frente a una cámara, un dedo puede detectarse como naranja. Agregar fotos sin naranjas (<em>negativos</em>) debería corregirlo.</li>
+          <li>Solo se detecta la naranja (caja + confianza); no se estima madurez, tamaño ni posición 3D.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">
+      El repositorio incluye además una <strong>demo con cámara en vivo</strong> que corre en la computadora local.
+      Instrucciones en el <a href="{{ site.repo_url }}#demo-con-cámara-en-vivo">README</a>.
+    </p>
+  </div>
+</section>
+
+
+<!-- EQUIPO -->
+<section id="equipo" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Equipo</span>
+      <h2 class="section-title">Integrantes del proyecto</h2>
       <p class="section-desc">
-        Desarrollado en el marco académico de la Universidad Nacional de Asunción.
+        Estudiantes de Ingeniería Mecatrónica de la Facultad de Ingeniería de la Universidad Nacional de Asunción.
       </p>
     </div>
 
     <div class="team-grid">
-      
-      <!-- Student 1: Nicolas De Egea -->
       <div class="team-card">
         <div class="avatar-wrapper">
-          <div class="avatar-inner">NE</div>
+          <div class="avatar-inner"><img src="{{ '/assets/img/equipo/nicolas-de-egea.jpg' | relative_url }}" alt="Nicolás De Egea" width="96" height="96"></div>
         </div>
-        <h3 class="team-name">Nicolas De Egea</h3>
-        <div class="team-role">Estudiante Investigador - IA & Visión</div>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-          Especializado en arquitectura de redes neuronales convolucionales, preprocesamiento de imágenes y entrenamiento de modelos de detección de objetos.
+        <h3 class="team-name">Nicolás De Egea</h3>
+        <div class="team-role">Estudiante de Ing. Mecatrónica · UNA</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          Robótica, programación, procesamiento de señales y sistemas inteligentes basados en inteligencia artificial y machine learning.
         </p>
-        <div class="team-uni">Universidad Nacional de Asunción</div>
+        <a href="{{ '/cv/nicolas-de-egea/' | relative_url }}" class="btn btn-secondary">Ver CV</a>
       </div>
 
-      <!-- Student 2: Sanie Peralta -->
       <div class="team-card">
         <div class="avatar-wrapper">
-          <div class="avatar-inner">SP</div>
+          <div class="avatar-inner"><img src="{{ '/assets/img/equipo/sanie-peralta.jpg' | relative_url }}" alt="Sanie Peralta" width="96" height="96"></div>
         </div>
         <h3 class="team-name">Sanie Peralta</h3>
-        <div class="team-role">Estudiante Investigadora - IA & Visión</div>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem;">
-          Especializada en desarrollo de prototipos experimentales, recolección de datasets orgánicos y optimización de algoritmos en tiempo real.
+        <div class="team-role">Estudiante de Ing. Mecatrónica · UNA</div>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          Sistemas embebidos, control y automatización, con interés en modelos de inteligencia artificial y desarrollo web.
         </p>
-        <div class="team-uni">Universidad Nacional de Asunción</div>
+        <a href="{{ '/cv/sanie-peralta/' | relative_url }}" class="btn btn-secondary">Ver CV</a>
       </div>
-
     </div>
 
-    <!-- University Banner -->
     <div class="uni-banner">
       <div class="uni-info">
-        <h3>Universidad Nacional de Asunción (UNA)</h3>
+        <h3>Inteligencia Artificial 2026</h3>
         <p>
-          Proyecto de innovación en el área de Inteligencia Artificial aplicada a la automatización agrícola y citricultura de precisión. San Lorenzo, Paraguay — 2026.
+          Proyecto final de la cátedra de Inteligencia Artificial, Facultad de Ingeniería, Universidad Nacional de
+          Asunción (FIUNA). San Lorenzo, Paraguay.
         </p>
       </div>
-      <div class="uni-logo-box">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        <span>UNA - PARAGUAY</span>
-      </div>
+      <a href="{{ site.repo_url }}" class="btn btn-primary">Repositorio completo</a>
     </div>
-
   </div>
 </section>

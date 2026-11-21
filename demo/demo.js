@@ -2,7 +2,8 @@
  * Orange Vision AI - Demostración en vivo
  * Universidad Nacional de Asunción 2026
  *
- * El video con las detecciones lo genera serve.py (/video_feed).
+ * Demo local (no se publica en GitHub Pages). El video con las detecciones
+ * lo genera serve.py (/video_feed).
  * Este script solo envía el umbral y los interruptores al servidor
  * y muestra las estadísticas del último cuadro analizado.
  */

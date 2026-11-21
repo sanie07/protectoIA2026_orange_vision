@@ -1,7 +1,8 @@
 """
 Servidor local de Orange Vision AI.
 
-- Sirve la página (index.html + _layouts/default.html) en http://localhost:8000
+- Sirve la página de la demo (demo/index.html) en http://localhost:8000.
+  La landing page de GitHub Pages (index.html, cv/) no incluye la demo.
 - Abre la cámara, corre un modelo entrenado en v4 (YOLO11n o YOLO11m sobre
   Mendeley, carpeta models/v4/) y transmite el video con las detecciones
   dibujadas en /video_feed.
@@ -11,7 +12,6 @@ Uso:  python serve.py        (variables opcionales: CAMARA=1, UMBRAL=0.4)
 """
 import json
 import os
-import re
 import threading
 import time
 import webbrowser
@@ -155,52 +155,12 @@ def gen_frames():
 
 
 # ---------------------------------------------------------------------------
-# Página (vista previa local del sitio Jekyll)
+# Página de la demo (demo/index.html). El sitio de GitHub Pages es aparte y no
+# incluye la demo: la cámara y el modelo solo existen en esta computadora.
 # ---------------------------------------------------------------------------
-def build_site():
-    layout_path = os.path.join(DIRECTORY, '_layouts', 'default.html')
-    index_path = os.path.join(DIRECTORY, 'index.html')
-    output_path = os.path.join(DIRECTORY, '_preview.html')
-
-    if not os.path.exists(layout_path) or not os.path.exists(index_path):
-        return False
-
-    with open(layout_path, 'r', encoding='utf-8') as f:
-        layout_content = f.read()
-
-    with open(index_path, 'r', encoding='utf-8') as f:
-        page_content = f.read()
-
-    title = "Orange Vision AI - Detección de Naranjas | UNA"
-    description = "Prototipo de Inteligencia Artificial para la detección de naranjas reales."
-
-    frontmatter_match = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', page_content, re.DOTALL)
-    body = page_content
-    if frontmatter_match:
-        fm_text = frontmatter_match.group(1)
-        body = frontmatter_match.group(2)
-
-        t_match = re.search(r'title:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
-        if t_match: title = t_match.group(1)
-
-        d_match = re.search(r'description:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
-        if d_match: description = d_match.group(1)
-
-    merged = layout_content.replace('{{ content }}', body)
-    merged = re.sub(r'\{\{\s*page\.title\s*\|\s*default:\s*site\.title\s*\}\}', title, merged)
-    merged = re.sub(r'\{\{\s*page\.description\s*\|\s*default:\s*site\.description\s*\}\}', description, merged)
-    merged = re.sub(r'\{\{\s*[\'"]/(.*?)[\'"]\s*\|\s*relative_url\s*\}\}', lambda m: m.group(1) if m.group(1) else '#', merged)
-    merged = re.sub(r'\{\{\s*[\'"]/(.*?)[\'"]\s*\}\}', lambda m: m.group(1) if m.group(1) else '#', merged)
-
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(merged)
-    return True
-
-
 @app.route('/')
 def index():
-    build_site()
-    return send_file(os.path.join(DIRECTORY, '_preview.html'))
+    return send_file(os.path.join(DIRECTORY, 'demo', 'index.html'))
 
 
 @app.route('/video_feed')

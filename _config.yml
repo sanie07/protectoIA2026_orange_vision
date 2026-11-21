@@ -1,36 +1,24 @@
 # Configuración de Jekyll para GitHub Pages
-title: "Orange Vision AI - Detección de Naranjas"
-description: "Proyecto de Visión por Computadora e Inteligencia Artificial para la detección e identificación de naranjas reales en arbustos sintéticos de prueba."
+title: "Orange Vision AI - Detección de naranjas con YOLO"
+description: "Proyecto final de Inteligencia Artificial 2026 (FIUNA - UNA): detectores YOLO entrenados para encontrar naranjas en fotos de campo, con transfer learning, fine-tuning y optimización del learning rate."
 url: "https://sanie07.github.io" # URL de GitHub Pages
 baseurl: "/protectoIA2026_orange_vision" # Nombre del repositorio
-
-university: "Universidad Nacional de Asunción"
-faculty: "Facultad Politécnica / Ingeniería"
-year: "2026"
-
-authors:
-  - name: "Nicolas De Egea"
-    role: "Investigador / Desarrollador IA"
-  - name: "Sanie Peralta"
-    role: "Investigadora / Desarrolladora IA"
+repo_url: "https://github.com/sanie07/protectoIA2026_orange_vision"
 
 markdown: kramdown
 theme: null
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 
-sass:
-  style: compressed
-
-# Carpetas del proyecto que no forman parte del sitio web
+# Carpetas y archivos del repositorio que no forman parte del sitio web.
+# results/ sí se publica: la página muestra sus gráficas.
+# demo/ y serve.py son la demo con cámara, que solo funciona en local.
 exclude:
   - notebooks/
   - models/
   - data/
-  - results/
+  - demo/
   - ReferenciasBibliograficas/
-  - historial_capturas/
   - serve.py
   - requirements.txt
   - README.md
+  - instrucciones_githubpage.pdf
+  - fotos-cv/

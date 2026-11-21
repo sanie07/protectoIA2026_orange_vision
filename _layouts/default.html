@@ -5,38 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
-  <meta name="keywords" content="Inteligencia Artificial, Visión por Computadora, Detección de Naranjas, Machine Learning, UNA, Universidad Nacional de Asunción, Nicolas De Egea, Sanie Peralta">
-  <meta name="author" content="Nicolas De Egea, Sanie Peralta">
+  <meta name="author" content="Nicolás De Egea, Sanie Peralta">
 
-  <!-- Open Graph / Social Media -->
+  <!-- Open Graph / redes sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ page.description | default: site.description }}">
-  
-  <!-- Fonts Google -->
+
+  <!-- Fuente -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Style CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
 
-  <!-- Glow Background Effect -->
   <div class="bg-glow">
     <div class="glow-circle-1"></div>
     <div class="glow-circle-2"></div>
   </div>
 
-  <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container navbar-inner">
       <a href="{{ '/' | relative_url }}" class="brand-logo">
         <div class="brand-icon">
           <svg viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="9" stroke="none"/>
-            <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7 7 7 0 0 1-7 7z"/>
             <circle cx="12" cy="12" r="4" fill="rgba(255,255,255,0.4)"/>
           </svg>
         </div>
@@ -44,38 +39,37 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#inicio" class="nav-link">Inicio</a></li>
-        <li><a href="#prototipo" class="nav-link">Prototipo Sintético</a></li>
-        <li><a href="#demostrador" class="nav-link">Simulador IA</a></li>
-        <li><a href="#metricas" class="nav-link">Métricas</a></li>
-        <li><a href="#equipo" class="nav-link">Equipo & UNA</a></li>
+        <li><a href="{{ '/#proyecto' | relative_url }}" class="nav-link">Proyecto</a></li>
+        <li><a href="{{ '/#resultados' | relative_url }}" class="nav-link">Resultados</a></li>
+        <li><a href="{{ '/#equipo' | relative_url }}" class="nav-link">Equipo</a></li>
+        <li><a href="{{ '/cv/sanie-peralta/' | relative_url }}" class="nav-link">CV Sanie</a></li>
+        <li><a href="{{ '/cv/nicolas-de-egea/' | relative_url }}" class="nav-link">CV Nicolás</a></li>
+        <li><a href="{{ site.repo_url }}" class="nav-link">GitHub</a></li>
       </ul>
 
       <div class="nav-badge">
         <span class="badge-dot"></span>
-        <span>Prototipo v1.0 | UNA</span>
+        <span>IA 2026 · FIUNA</span>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main>
     {{ content }}
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p style="margin-bottom: 0.5rem; font-weight: 600; color: var(--text-main);">
-        Orange Vision AI &copy; 2026 — Universidad Nacional de Asunción (UNA)
+        Orange Vision AI · Inteligencia Artificial 2026 · Facultad de Ingeniería, Universidad Nacional de Asunción
       </p>
       <p>
-        Desarrollado por <strong>Nicolas De Egea</strong> y <strong>Sanie Peralta</strong> como prototipo de investigación en Visión por Computadora aplicable a la citricultura.
+        <a href="{{ '/cv/nicolas-de-egea/' | relative_url }}">Nicolás De Egea</a> y
+        <a href="{{ '/cv/sanie-peralta/' | relative_url }}">Sanie Peralta</a> ·
+        Código, notebooks y resultados en <a href="{{ site.repo_url }}">GitHub</a>
       </p>
     </div>
   </footer>
 
-  <!-- Main JavaScript -->
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orange Vision AI - Demo local</title>
+  <!-- Demo local: la sirve serve.py en http://localhost:8000. No forma parte de GitHub Pages. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/demo/demo.css">
+</head>
+<body>
+  <div class="bg-glow">
+    <div class="glow-circle-1"></div>
+    <div class="glow-circle-2"></div>
+  </div>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <span class="brand-logo">
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <span>OrangeVision <span style="color: var(--primary);">AI</span></span>
+      </span>
+      <div class="nav-badge">
+        <span class="badge-dot"></span>
+        <span>Demo local</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="demostrador" class="section demo-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Demo local con cámara</span>
+          <h1 class="section-title">Detección de naranjas en tiempo real</h1>
+          <p class="section-desc">
+            El modelo entrenado en v4 (Mendeley, fine-tuning) analiza la cámara de esta computadora.
+            Ajuste el modelo, el umbral de confianza y las capas de visualización.
+          </p>
+        </div>
+
+        <div class="demo-container">
+          <div class="demo-grid">
+
+            <!-- Cámara en vivo con las detecciones dibujadas por serve.py -->
+            <div>
+              <div class="viewport-wrapper">
+                <img id="ia-camera-feed" src="/video_feed" alt="Cámara en vivo con detecciones">
+                <div class="viewport-overlay">
+                  <div class="status-pill rec">CÁMARA EN VIVO</div>
+                  <div class="status-pill" id="fpsCounter">-- FPS</div>
+                </div>
+                <div class="viewport-msg" id="viewportMsg">Conectando con la cámara...</div>
+              </div>
+            </div>
+
+            <!-- Controles -->
+            <div class="controls-panel">
+              <div class="control-card">
+                <div class="control-title">Modelo de detección</div>
+                <div class="model-switch" role="group" aria-label="Modelo de detección">
+                  <button type="button" class="model-btn active" data-modelo="YOLO11n">
+                    YOLO11n<small>Más rápido</small>
+                  </button>
+                  <button type="button" class="model-btn" data-modelo="YOLO11m">
+                    YOLO11m<small>Más preciso</small>
+                  </button>
+                </div>
+              </div>
+
+              <div class="control-card">
+                <div class="control-title">
+                  <span>Umbral de confianza</span>
+                  <span id="confidenceValue" style="color: var(--primary);">--%</span>
+                </div>
+                <input type="range" id="confidenceSlider" class="range-slider" min="0.05" max="0.95" step="0.01" value="0.50">
+                <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">
+                  Filtra detecciones con probabilidad inferior al valor elegido. Valor inicial: 50 %, más estricto que
+                  el umbral de máximo F1 en validación (≈30 %) para descartar dedos y piel frente a la cámara.
+                </p>
+              </div>
+
+              <div class="control-card">
+                <div class="control-title">Estadísticas de detección</div>
+                <div class="stats-counter-list">
+                  <div class="stat-row">
+                    <span class="stat-label">Naranjas detectadas:</span>
+                    <span class="stat-val" id="countTotal">0</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">Confianza promedio:</span>
+                    <span class="stat-val" id="avgConf">-</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">Inferencia:</span>
+                    <span class="stat-val" id="inferMs">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="control-card">
+                <div class="control-title">Capas de visualización</div>
+                <div class="toggle-group">
+                  <label class="toggle-item">
+                    <span>Cajas de detección</span>
+                    <div class="switch">
+                      <input type="checkbox" id="toggleBoxes" checked>
+                      <span class="slider-toggle"></span>
+                    </div>
+                  </label>
+                  <label class="toggle-item">
+                    <span>Etiquetas y porcentajes</span>
+                    <div class="switch">
+                      <input type="checkbox" id="toggleLabels" checked>
+                      <span class="slider-toggle"></span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Métricas del modelo elegido (test de Mendeley, promedio de 3 semillas) -->
+        <div class="metrics-box" style="margin-top: 2rem;">
+          <div class="metric-item">
+            <div class="metric-number" id="metricMap50">79.3%</div>
+            <div class="metric-label">mAP@0.50</div>
+            <div class="metric-sub">Test Mendeley · <span id="metricsModel">YOLO11n</span></div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-number" id="metricPrecision">83.5%</div>
+            <div class="metric-label">Precisión</div>
+            <div class="metric-sub">Detecciones correctas</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-number" id="metricRecall">69.9%</div>
+            <div class="metric-label">Recall</div>
+            <div class="metric-sub">Naranjas encontradas</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-number" id="metricMs">10 ms</div>
+            <div class="metric-label">Latencia</div>
+            <div class="metric-sub">Por imagen en GPU T4</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/demo/demo.js"></script>
+</body>
+</html>

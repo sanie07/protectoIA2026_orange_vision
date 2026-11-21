@@ -1,7 +1,9 @@
 # 🍊 Orange Vision AI — Detección de naranjas con YOLO
 
 Proyecto del curso **Inteligencia Artificial 2026** — Universidad Nacional de Asunción.
-Autores: Nicolas De Egea y Sanie Peralta.
+Autores: Nicolás De Egea y Sanie Peralta.
+
+Página del proyecto y CV de los integrantes: https://sanie07.github.io/protectoIA2026_orange_vision/
 
 Entrenamos y comparamos detectores de objetos (YOLOv8n, YOLO11n, YOLOv8m, YOLO11m y RT-DETR) para encontrar
 naranjas en fotos de campo, medimos cuánto aporta cada etapa del entrenamiento (modelo puro → *transfer learning*
@@ -20,13 +22,11 @@ naranjas en fotos de campo, medimos cuánto aporta cada etapa del entrenamiento 
 ├── models/            ← pesos entrenados (.pt) y modelos.json con métricas y umbrales
 │   ├── v4/                  entrenados en Mendeley (los usa la demo)
 │   └── v4_1/                entrenados en DeepFruits
-├── serve.py           ← demo local: cámara + detección en vivo (Flask)
-├── index.html, _layouts/, assets/, _config.yml   ← página web del proyecto (GitHub Pages)
+├── serve.py, demo/    ← demo local: cámara + detección en vivo (Flask); no se publica en GitHub Pages
+├── index.html, cv/, _layouts/, assets/, _config.yml   ← sitio de GitHub Pages: proyecto + CV de cada integrante
 └── requirements.txt
 ```
 
-En Google Drive los notebooks escriben en `Proyecto/resultados/` y `Proyecto/modelos/`; en este repositorio esas
-carpetas son `results/` y `models/`.
 
 ## Notebooks
 
@@ -144,12 +144,18 @@ Valores por defecto y por qué:
 - **Umbral 0.50.** El umbral de máximo F1 (≈ 0.3) está calibrado para fotos de campo; frente a la cámara deja pasar
   dedos y piel como "naranjas". Con 0.50 casi todos los frutos reales siguen detectándose.
 
-La página publicada en GitHub Pages muestra el diseño y las métricas; la cámara solo funciona al ejecutar `serve.py`
-localmente.
+La demo vive en `demo/` y solo funciona localmente con `serve.py`: la página de GitHub Pages no la incluye.
 
-**Historia:** la primera demo usaba un YOLO11n entrenado con 84 fotos de Mendeley (mAP50-95 en validación ≈ 0.30).
-Detectaba menos falsos positivos solo porque usaba umbral 0.50, pero también encontraba muchas menos naranjas que
-los modelos de v4.
+## Página web (GitHub Pages)
+
+El sitio se genera con Jekyll desde la rama `main` (*Settings → Pages → Deploy from a branch → `main` / root*):
+
+- `index.html`: el proyecto (dataset, modelos, optimización de hiperparámetros, resultados y conclusiones). Las
+  gráficas se toman directamente de `results/`.
+- `cv/sanie-peralta.html` y `cv/nicolas-de-egea.html`: CV de cada integrante (inicio, habilidades, educación,
+  proyecto y contacto).
+
+`_config.yml` excluye del sitio `notebooks/`, `models/`, `data/`, `demo/` y `serve.py`.
 
 ## Limitaciones y trabajo futuro
 
@@ -164,7 +170,3 @@ los modelos de v4.
 - Sa, I., Lim, J. Y., Ahn, H. S. y MacDonald, B. (2022). *deepNIR: Datasets for Generating Synthetic NIR Images and
   Improved Fruit Detection System Using Deep Learning Techniques*. Sensors, 22(13), 4721.
 - Ultralytics YOLO: https://docs.ultralytics.com
-- Artículos de contexto (notas en [`ReferenciasBibliograficas/`](ReferenciasBibliograficas/)): *Detection and
-  localization of citrus fruit based on improved YOLO*; *A Proposal for Automatic Fruit Harvesting by Combining a
-  Low Cost Stereo Vision and Robotic Arm*; *Toward Vision Based Dual Arm Robot Picking Fruit*; revisión
-  *Recognition and Localization*.
